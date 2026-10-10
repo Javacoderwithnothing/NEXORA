@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080a13">
+  <meta name="description" content="NEXORA WEB creates modern, custom websites for creators, gaming projects, portfolios, and businesses. Your vision. Our creation.">
+  <title>NEXORA WEB — Your Vision. Our Creation.</title>
+  <style>
+    :root {
+      --bg: #080a13;
+      --panel: rgba(17, 21, 39, .82);
+      --text: #f4f6ff;
+      --muted: #a3abc4;
+      --cyan: #48e7ff;
+      --purple: #a879ff;
+      --line: rgba(160, 177, 255, .17);
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 12% 8%, rgba(43, 93, 190, .19), transparent 34rem),
+        radial-gradient(ellipse at 90% 27%, rgba(129, 56, 205, .15), transparent 32rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(8, 10, 19, .78);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 850; letter-spacing: .08em; }
+    .brand-mark {
+      display: grid; place-items: center; width: 39px; height: 39px; border-radius: 12px;
+      border: 1px solid rgba(72, 231, 255, .55);
+      background: linear-gradient(135deg, rgba(72, 231, 255, .17), rgba(168, 121, 255, .18));
+      color: var(--cyan); box-shadow: 0 0 24px rgba(72, 231, 255, .12); font-size: 21px;
+    }
+    .brand-name { font-size: 14px; }
+    .brand-name span { color: var(--cyan); }
+    .nav-links { display: flex; align-items: center; gap: 25px; color: var(--muted); font-size: 13px; }
+    .nav-links a:hover { color: var(--cyan); }
+    .nav-cta, .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      padding: 12px 17px; border-radius: 12px; border: 1px solid rgba(72, 231, 255, .5);
+      background: linear-gradient(110deg, rgba(72, 231, 255, .15), rgba(168, 121, 255, .16));
+      color: var(--text); font-weight: 750; font-size: 13px; transition: transform .2s, border-color .2s, box-shadow .2s;
+      cursor: pointer;
+    }
+    .nav-cta:hover, .btn:hover { transform: translateY(-2px); border-color: var(--cyan); box-shadow: 0 10px 35px rgba(72, 231, 255, .12); }
+    .btn.primary { background: linear-gradient(100deg, #42dff5, #a17aff); color: #080a13; border: 0; }
+    .btn.secondary { background: rgba(255,255,255,.025); border-color: var(--line); }
+    .hero { position: relative; padding: 100px 0 86px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 55px; align-items: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--cyan); text-transform: uppercase; font-size: 11px; letter-spacing: .19em; font-weight: 800; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 14px var(--cyan); }
+    h1 { font-size: clamp(43px, 6.3vw, 76px); letter-spacing: -.065em; line-height: .99; margin: 21px 0; max-width: 720px; }
+    .gradient-text { background: linear-gradient(95deg, var(--cyan), #b8a1ff 65%, #d6a0ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero-copy { max-width: 540px; color: var(--muted); font-size: 16px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 27px; }
+    .mini-proof { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 30px; color: var(--muted); font-size: 12px; }
+    .mini-proof span::before { content: "✦"; color: var(--cyan); margin-right: 7px; }
+    .visual-wrap { min-height: 360px; display: grid; place-items: center; position: relative; }
+    .orb { position: absolute; width: 290px; height: 290px; border-radius: 50%; background: linear-gradient(135deg, rgba(72,231,255,.2), rgba(168,121,255,.16)); filter: blur(35px); }
+    .visual-card {
+      position: relative; width: min(100%, 420px); padding: 17px; border: 1px solid rgba(139, 164, 255, .25);
+      border-radius: 23px; background: linear-gradient(145deg, rgba(22, 28, 50, .94), rgba(10, 13, 26, .92));
+      box-shadow: 0 30px 100px rgba(0,0,0,.35), 0 0 55px rgba(90, 116, 255, .1); transform: rotate(2deg);
+    }
+    .window-top { display: flex; gap: 6px; padding: 2px 0 15px; border-bottom: 1px solid var(--line); }
+    .window-top i { width: 7px; height: 7px; border-radius: 50%; background: #ff6d92; }
+    .window-top i:nth-child(2) { background: #ffce6a; } .window-top i:nth-child(3) { background: #58efb2; }
+    .mock-hero { padding: 28px 13px 24px; border-radius: 13px; margin-top: 14px; background: radial-gradient(circle at 85% 20%, rgba(168,121,255,.22), transparent 50%), linear-gradient(135deg, rgba(72,231,255,.07), rgba(168,121,255,.08)); }
+    .mock-label { color: var(--cyan); font-size: 9px; letter-spacing: .2em; text-transform: uppercase; }
+    .mock-title { font-size: clamp(25px, 3vw, 36px); line-height: 1.05; letter-spacing: -.04em; font-weight: 850; margin: 13px 0; }
+    .mock-desc { color: var(--muted); font-size: 11px; max-width: 240px; }
+    .mock-button { display: inline-block; margin-top: 17px; padding: 8px 12px; border-radius: 8px; color: #080a13; font-weight: 800; font-size: 10px; background: linear-gradient(100deg, var(--cyan), #b7a0ff); }
+    .mock-bars { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .mock-bars span { height: 54px; border: 1px solid var(--line); border-radius: 9px; background: linear-gradient(135deg, rgba(72,231,255,.08), rgba(168,121,255,.07)); }
+    section { padding: 82px 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 30px; }
+    .section-kicker { color: var(--cyan); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; font-weight: 800; }
+    h2 { font-size: clamp(30px, 4vw, 46px); letter-spacing: -.045em; line-height: 1.1; margin: 9px 0 0; }
+    .section-desc { color: var(--muted); max-width: 450px; font-size: 14px; margin: 0; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .card { padding: 23px; border: 1px solid var(--line); border-radius: 17px; background: var(--panel); transition: transform .22s, border-color .22s, background .22s; }
+    .card:hover { transform: translateY(-5px); border-color: rgba(72,231,255,.42); background: rgba(20,25,46,.95); }
+    .icon-box { width: 43px; height: 43px; display: grid; place-items: center; border-radius: 12px; background: rgba(72,231,255,.09); border: 1px solid rgba(72,231,255,.2); font-size: 20px; }
+    h3 { margin: 17px 0 8px; font-size: 17px; }
+    .card p { color: var(--muted); font-size: 13px; margin: 0; }
+    .portfolio-card { overflow: hidden; padding: 0; }
+    .portfolio-preview { min-height: 170px; padding: 18px; display: flex; flex-direction: column; justify-content: space-between; background: radial-gradient(circle at 80% 10%, rgba(168,121,255,.32), transparent 45%), linear-gradient(135deg, #111d35, #111020); border-bottom: 1px solid var(--line); }
+    .preview-top { display: flex; justify-content: space-between; font-size: 10px; color: #dce5ff; }
+    .preview-word { font-size: 25px; font-weight: 850; letter-spacing: -.05em; max-width: 240px; line-height: 1.1; }
+    .preview-word span { color: var(--cyan); }
+    .preview-tag { font-size: 9px; color: #c3c9e1; letter-spacing: .13em; text-transform: uppercase; }
+    .portfolio-info { padding: 19px; }
+    .tag { display: inline-block; padding: 5px 8px; margin-top: 11px; font-size: 10px; border-radius: 7px; border: 1px solid var(--line); color: var(--muted); }
+    .about-panel { display: grid; grid-template-columns: .8fr 1.2fr; gap: 35px; align-items: center; padding: 34px; border-radius: 22px; border: 1px solid var(--line); background: linear-gradient(120deg, rgba(72,231,255,.06), rgba(168,121,255,.07)); }
+    .about-symbol { min-height: 210px; display: grid; place-items: center; font-size: 100px; font-weight: 900; color: var(--cyan); text-shadow: 0 0 35px rgba(72,231,255,.28); border-radius: 16px; background: radial-gradient(circle, rgba(72,231,255,.09), transparent 65%); }
+    .about-panel p { color: var(--muted); font-size: 14px; }
+    .values { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+    .values span { border: 1px solid var(--line); border-radius: 100px; padding: 7px 11px; font-size: 11px; color: #dce3fa; }
+    .contact-panel { display: grid; grid-template-columns: 1fr auto; gap: 25px; align-items: center; padding: 35px; border-radius: 22px; border: 1px solid rgba(72,231,255,.25); background: radial-gradient(ellipse at 100% 0%, rgba(168,121,255,.16), transparent 50%), rgba(14,18,34,.9); }
+    .contact-panel p { color: var(--muted); max-width: 580px; margin-bottom: 0; }
+    .permission-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:10px 0 14px}.permission-option{display:flex!important;align-items:center;gap:8px;background:#101629;border:1px solid var(--line);border-radius:10px;padding:10px;color:var(--text)!important}.permission-option input{width:auto!important;margin:0!important}.owner-dashboard{margin:14px 0 24px;padding:18px;border:1px solid rgba(72,231,255,.3);border-radius:16px;background:linear-gradient(135deg,rgba(72,231,255,.07),rgba(168,121,255,.08))}.user-table{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:12px}.user-table th,.user-table td{text-align:left;padding:9px;border-bottom:1px solid var(--line);overflow-wrap:anywhere}.user-table th{color:var(--muted);font-weight:600}.dashboard-actions{display:flex;gap:8px;flex-wrap:wrap}.account-bar{display:flex;gap:10px;align-items:center;justify-content:flex-end;flex-wrap:wrap;margin:0 0 18px}.small-btn{border:1px solid var(--line);background:#12182a;color:var(--text);padding:10px 14px;border-radius:12px;cursor:pointer;font:inherit}.modal-backdrop{position:fixed;inset:0;background:#03040bdc;z-index:99;display:none;align-items:center;justify-content:center;padding:16px}.modal-backdrop.open{display:flex}.app-modal{width:min(760px,100%);max-height:90vh;overflow:auto;background:#0c1020;border:1px solid rgba(72,231,255,.3);border-radius:22px;padding:22px;box-shadow:0 20px 80px #0009}.app-modal h2{margin:0 0 12px}.app-modal input,.app-modal textarea{width:100%;box-sizing:border-box;background:#090d19;border:1px solid #2c3550;color:#fff;border-radius:10px;padding:12px;font:inherit;margin:6px 0 12px}.app-modal label{display:block;color:var(--muted);font-size:.9rem}.modal-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.auth-tabs{display:flex;gap:8px;margin:12px 0}.chat-list{display:flex;flex-direction:column;gap:10px;margin:16px 0}.chat-message{background:#151b2d;border:1px solid #27314b;border-radius:12px;padding:12px;overflow-wrap:anywhere}.chat-message small{color:var(--muted)}.chat-compose{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end}.chat-compose textarea{margin:0}.file-list{font-size:.85rem;color:var(--muted);margin:8px 0}.role-pill{font-size:.78rem;color:#72eaff;border:1px solid #286879;padding:4px 8px;border-radius:999px}.notice{color:#ffc979;font-size:.85rem;line-height:1.5}.hidden{display:none!important}
+    footer { padding: 27px 0 35px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 15px; flex-wrap: wrap; }
+    .footer-tag { color: var(--cyan); letter-spacing: .1em; }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } .reveal { opacity: 1; transform: none; } }
+    @media (max-width: 800px) {
+      .nav { min-height: 67px; } .nav-links { display: none; } .nav-cta { padding: 10px 12px; }
+      .hero { padding: 68px 0 55px; } .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+      .visual-wrap { min-height: 290px; } .visual-card { max-width: 390px; }
+      section { padding: 60px 0; } .cards { grid-template-columns: repeat(2, 1fr); }
+      .section-head { align-items: start; flex-direction: column; gap: 12px; }
+      .about-panel { grid-template-columns: 1fr; gap: 18px; padding: 22px; } .about-symbol { min-height: 130px; font-size: 76px; }
+      .contact-panel { grid-template-columns: 1fr; padding: 25px; }
+    }
+    @media (max-width: 520px) {
+      .container { width: min(var(--max), calc(100% - 28px)); }
+      .brand { gap: 8px; } .brand-mark { width: 35px; height: 35px; } .brand-name { font-size: 12px; }
+      .nav-cta { font-size: 11px; padding: 9px 10px; }
+      h1 { font-size: clamp(42px, 13vw, 62px); }
+      .hero-copy { font-size: 14px; } .hero-actions .btn { flex: 1; padding: 12px 10px; font-size: 12px; }
+      .cards { grid-template-columns: 1fr; } .card { padding: 20px; } .permission-grid{grid-template-columns:1fr}.user-table{font-size:.78rem}.user-table th,.user-table td{padding:6px}
+      .portfolio-preview { min-height: 155px; } .contact-panel .btn { width: 100%; }
+      .mini-proof { gap: 11px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="NEXORA WEB home">
+        <span class="brand-mark">N</span>
+        <span class="brand-name">NEXORA <span>WEB</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#about">About</a>
+      </div>
+      <a class="nav-cta" href="#contact">Let's talk <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="eyebrow"><span class="dot"></span> Digital experiences, reimagined</div>
+          <h1>Your vision.<br><span class="gradient-text">Our creation.</span></h1>
+          <p class="hero-copy">We turn bold ideas into modern, memorable websites. Thoughtful design, smooth experiences, and a digital presence made to feel like you.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#portfolio">Explore our work <span aria-hidden="true">↗</span></a>
+            <a class="btn secondary" href="#services">What we do</a>
+          </div>
+          <div class="mini-proof"><span>Custom designs</span><span>Mobile-friendly</span><span>Made with care</span></div>
+        </div>
+        <div class="visual-wrap reveal" aria-label="Illustration of a futuristic website">
+          <div class="orb"></div>
+          <div class="visual-card">
+            <div class="window-top"><i></i><i></i><i></i></div>
+            <div class="mock-hero">
+              <div class="mock-label">NEXORA / DIGITAL STUDIO</div>
+              <div class="mock-title">Make your<br>next move.</div>
+              <div class="mock-desc">A bold digital home for your next big idea.</div>
+              <span class="mock-button">LET'S BUILD ↗</span>
+            </div>
+            <div class="mock-bars"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="section-kicker">What we do</div><h2>Ideas into experiences.</h2></div>
+          <p class="section-desc">From a first concept to a polished online presence, explore the kinds of websites NEXORA WEB can help create.</p>
+        </div>
+        <div class="cards">
+          <article class="card reveal"><div class="icon-box">⌘</div><h3>Custom Websites</h3><p>Unique layouts and visual styles shaped around your idea, goals, and audience.</p></article>
+          <article class="card reveal"><div class="icon-box">🎮</div><h3>Gaming Websites</h3><p>Websites for gaming communities, Minecraft projects, servers, and creators.</p></article>
+          <article class="card reveal"><div class="icon-box">▤</div><h3>Portfolio Websites</h3><p>A clean place to showcase your work, projects, skills, and creative journey.</p></article>
+          <article class="card reveal"><div class="icon-box">◈</div><h3>Business Websites</h3><p>A professional home for a brand, service, small business, or new idea.</p></article>
+          <article class="card reveal"><div class="icon-box">✦</div><h3>Landing Pages</h3><p>Focused pages that introduce a project, share key details, and guide visitors.</p></article>
+          <article class="card reveal"><div class="icon-box">＋</div><h3>And More</h3><p>Have a different idea? Tell us what you imagine and we can discuss the possibilities.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="section-kicker">Selected concepts</div><h2>Design with a purpose.</h2></div>
+          <p class="section-desc">A preview of the visual direction we love. These cards are concept examples, not completed client projects.</p>
+        </div>
+        <div class="cards">
+          <article class="card portfolio-card reveal">
+            <div class="portfolio-preview"><div class="preview-top"><span>01 / CREATOR</span><span>↗</span></div><div class="preview-word">Your story.<br><span>Your space.</span></div><div class="preview-tag">Creator portfolio concept</div></div>
+            <div class="portfolio-info"><h3>Creator Portfolio</h3><p>A personal showcase concept with a bold hero and clear project highlights.</p><span class="tag">CONCEPT DESIGN</span></div>
+          </article>
+          <article class="card portfolio-card reveal">
+            <div class="portfolio-preview" style="background:radial-gradient(circle at 15% 15%,rgba(72,231,255,.22),transparent 48%),linear-gradient(135deg,#101c30,#101020)"><div class="preview-top"><span>02 / GAMING</span><span>↗</span></div><div class="preview-word">Enter the<br><span>next level.</span></div><div class="preview-tag">Gaming community concept</div></div>
+            <div class="portfolio-info"><h3>Gaming Community</h3><p>A futuristic concept for a team, gaming community, or server project.</p><span class="tag">CONCEPT DESIGN</span></div>
+          </article>
+          <article class="card portfolio-card reveal">
+            <div class="portfolio-preview" style="background:radial-gradient(circle at 80% 10%,rgba(168,121,255,.3),transparent 48%),linear-gradient(135deg,#20162e,#101020)"><div class="preview-top"><span>03 / BUSINESS</span><span>↗</span></div><div class="preview-word">Built for<br><span>what's next.</span></div><div class="preview-tag">Business landing concept</div></div>
+            <div class="portfolio-info"><h3>Business Landing Page</h3><p>A clear, modern introduction to a service, product, or new business.</p><span class="tag">CONCEPT DESIGN</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="about-panel reveal">
+          <div class="about-symbol" aria-hidden="true">N<span class="gradient-text">.</span></div>
+          <div><div class="section-kicker">A little about us</div><h2>Small beginnings.<br><span class="gradient-text">Big digital ideas.</span></h2>
+            <p>NEXORA WEB is a growing creative project built around one simple belief: every idea deserves a thoughtful online home. We focus on clean visuals, useful layouts, and making the process approachable.</p>
+            <p>We're building our portfolio one project at a time. If you have an idea, we'd love to hear about it.</p>
+            <div class="values"><span>Creative thinking</span><span>Clear communication</span><span>Always learning</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-panel reveal">
+          <div><div class="section-kicker">Have an idea?</div><h2>Let's build something<br><span class="gradient-text">worth visiting.</span></h2>
+            <p>Sign in to chat with our team, describe your website idea, and attach reference images or files.</p>
+          </div>
+          <button class="btn primary" id="open-request" type="button">Request a website <span aria-hidden="true">↗</span></button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <a class="brand" href="#home"><span class="brand-mark">N</span><span class="brand-name">NEXORA <span>WEB</span></span></a>
+      <span class="footer-tag">YOUR VISION. OUR CREATION.</span>
+      <span>© <span id="year"></span> NEXORA WEB</span>
+    </div>
+  </footer>
+
+
+  <div class="modal-backdrop" id="app-backdrop" role="dialog" aria-modal="true" aria-label="NEXORA account and website requests">
+    <div class="app-modal">
+      <div class="modal-head"><div><div class="section-kicker">NEXORA WEB PORTAL</div><h2 id="modal-title">Welcome</h2></div><button class="small-btn" id="close-modal" aria-label="Close">✕</button></div>
+      <div id="auth-view">
+        <div class="auth-tabs"><button class="small-btn" id="show-login">Log in</button><button class="small-btn" id="show-signup">Sign up</button></div>
+        <form id="auth-form"><label for="auth-email">Gmail / email</label><input id="auth-email" type="email" autocomplete="email" required placeholder="you@example.com"><label for="auth-username">Username (unique)</label><input id="auth-username" minlength="3" maxlength="20" autocomplete="username" pattern="[A-Za-z0-9_]+" placeholder="YourUsername"><label for="auth-password">Password</label><input id="auth-password" type="password" minlength="8" autocomplete="current-password" required placeholder="At least 8 characters"><button class="btn primary" type="submit" id="auth-submit">Log in</button></form>
+        <p class="notice">Prototype only: accounts are stored in this browser, not on a secure server. Do not use a real password here or publish this as a real account system yet.</p>
+      </div>
+      <div id="portal-view" class="hidden"><div class="account-bar"><span id="signed-in-as"></span><span class="role-pill" id="role-label"></span><button class="small-btn" id="logout">Log out</button></div>
+        <div id="owner-tools" class="owner-dashboard hidden"><div class="section-kicker">CONTROL CENTER</div><h3>Owner dashboard</h3><p class="notice">Manage existing accounts, assign roles, and choose individual permissions. Your username <strong>NEXORA</strong> is configured as the owner.</p><h3>Manage a member</h3><label for="role-username">Existing username</label><input id="role-username" placeholder="Enter exact username"><label for="role-choice">Role</label><select id="role-choice" class="small-btn"><option value="default">Default member</option><option value="maker">Website maker</option><option value="owner">Owner (full access)</option></select><h3>Permissions</h3><div class="permission-grid"><label class="permission-option"><input type="checkbox" id="perm-chat" checked> Chat with customers</label><label class="permission-option"><input type="checkbox" id="perm-files" checked> View/download attachments</label><label class="permission-option"><input type="checkbox" id="perm-manage-requests"> Manage website requests</label><label class="permission-option"><input type="checkbox" id="perm-manage-portfolio"> Edit portfolio</label><label class="permission-option"><input type="checkbox" id="perm-manage-users"> Manage members/roles</label><label class="permission-option"><input type="checkbox" id="perm-full-access"> Full site access</label></div><div class="dashboard-actions"><button class="btn primary" id="assign-role" type="button">Save role & permissions</button><button class="small-btn" id="load-member" type="button">Load member settings</button></div><h3>Registered members on this browser</h3><div id="member-list"></div><p class="notice">Demo limitation: changes only exist in this browser. A real shared website needs a backend/database; never rely on HTML alone to secure admin permissions.</p></div>
+        <h3>Website request chat</h3><p class="notice">Describe the website you want. Attachments are limited to 2 MB each in this demo.</p><div class="chat-list" id="chat-list"></div><form id="chat-form"><div class="chat-compose"><textarea id="chat-text" rows="3" maxlength="3000" placeholder="Tell us your website idea…" required></textarea><button class="btn primary" type="submit">Send</button></div><div style="display:flex;gap:10px;align-items:center;margin-top:10px"><label class="small-btn" for="chat-files" style="cursor:pointer">＋ Upload photo / files</label><input id="chat-files" type="file" multiple accept="image/*,.pdf,.txt,.doc,.docx,.zip" class="hidden"><span id="file-status" class="file-list">No files selected</span></div></form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Update the copyright year automatically.
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    /* ROLE SETUP: enter usernames here to pre-assign roles. Usernames are case-insensitive.
+       Example: const ROLE_ASSIGNMENTS = { "nexoraowner": "owner", "maker01": "maker" };
+       Allowed roles: owner, maker, default. */
+    const ROLE_ASSIGNMENTS = { "nexora": "owner" };
+    const DB_KEY = "nexora_portal_demo_v2";
+    const DEFAULT_PERMISSIONS = { chat:true, files:true, manageRequests:false, managePortfolio:false, manageUsers:false, fullAccess:false };
+    let authMode = "login", currentUser = null, pendingFiles = [];
+    const $ = (id) => document.getElementById(id);
+    const loadDB = () => { try { return JSON.parse(localStorage.getItem(DB_KEY)) || {users:[],messages:[]}; } catch { return {users:[],messages:[]}; } };
+    const saveDB = (db) => localStorage.setItem(DB_KEY, JSON.stringify(db));
+    const cleanName = (name) => name.trim().toLowerCase();
+    const roleFor = (username, savedRole) => { const key=cleanName(username); return (ROLE_ASSIGNMENTS[key] || savedRole || "default"); };
+    function openPortal(){ $('app-backdrop').classList.add('open'); refreshPortal(); }
+    function closePortal(){ $('app-backdrop').classList.remove('open'); }
+    function setMode(mode){ authMode=mode; $('modal-title').textContent=mode==='signup'?'Create your account':'Welcome back'; $('auth-submit').textContent=mode==='signup'?'Create account':'Log in'; $('auth-username').classList.toggle('hidden',mode==='login'); $('auth-username').required=mode==='signup'; $('auth-password').autocomplete=mode==='signup'?'new-password':'current-password'; }
+    function refreshPortal(){ const logged=!!currentUser; $('auth-view').classList.toggle('hidden',logged); $('portal-view').classList.toggle('hidden',!logged); if(!logged){setMode(authMode);return;} const db=loadDB(); const me=db.users.find(u=>u.usernameKey===currentUser.usernameKey); if(!me){currentUser=null;refreshPortal();return;} currentUser=me; const role=roleFor(me.username,me.role); $('signed-in-as').textContent=me.username+' · '+me.email; $('role-label').textContent=role==='owner'?'Owner':role==='maker'?'Website maker':'Default member'; $('owner-tools').classList.toggle('hidden',role!=='owner'); if(role==='owner')renderMembers(db); renderMessages(db); }
+    function renderMembers(db=loadDB()){const wrap=$('member-list');if(!db.users.length){wrap.textContent='No accounts registered yet.';return;}const table=document.createElement('table');table.className='user-table';const thead=document.createElement('thead');thead.innerHTML='<tr><th>Username</th><th>Email</th><th>Role</th></tr>';table.append(thead);const tbody=document.createElement('tbody');db.users.forEach(u=>{const tr=document.createElement('tr');[u.username,u.email,roleFor(u.username,u.role)].forEach(v=>{const td=document.createElement('td');td.textContent=v;tr.append(td);});tr.addEventListener('click',()=>{$('role-username').value=u.username;$('role-choice').value=roleFor(u.username,u.role);const p={...DEFAULT_PERMISSIONS,...u.permissions};$('perm-chat').checked=!!p.chat;$('perm-files').checked=!!p.files;$('perm-manage-requests').checked=!!p.manageRequests;$('perm-manage-portfolio').checked=!!p.managePortfolio;$('perm-manage-users').checked=!!p.manageUsers;$('perm-full-access').checked=!!p.fullAccess;});tbody.append(tr);});table.append(tbody);wrap.replaceChildren(table);}
+    function renderMessages(db=loadDB()){ const list=$('chat-list'); list.innerHTML=''; const messages=db.messages.filter(m=>m.usernameKey===currentUser.usernameKey || roleFor(currentUser.username,currentUser.role)==='owner' || roleFor(currentUser.username,currentUser.role)==='maker'); if(!messages.length){list.innerHTML='<p class="notice">No messages yet. Start by describing your website idea.</p>';return;} messages.forEach(m=>{const el=document.createElement('div');el.className='chat-message';const head=document.createElement('small');head.textContent=m.username+' · '+m.time;const body=document.createElement('div');body.textContent=m.text;el.append(head,body);(m.files||[]).forEach(f=>{const a=document.createElement('a');a.href=f.data;a.download=f.name;a.textContent='📎 '+f.name;a.style.display='block';a.style.color='#72eaff';el.append(a);});list.append(el);}); }
+    $('open-request').addEventListener('click',openPortal); $('close-modal').addEventListener('click',closePortal); $('app-backdrop').addEventListener('click',e=>{if(e.target===$('app-backdrop'))closePortal();}); $('show-login').addEventListener('click',()=>setMode('login')); $('show-signup').addEventListener('click',()=>setMode('signup'));
+    $('auth-form').addEventListener('submit',e=>{e.preventDefault();const email=$('auth-email').value.trim().toLowerCase(),password=$('auth-password').value,username=$('auth-username').value.trim();const db=loadDB();if(authMode==='signup'){if(!/^[A-Za-z0-9_]{3,20}$/.test(username)){alert('Username must be 3–20 letters, numbers, or underscores.');return;}if(db.users.some(u=>u.usernameKey===cleanName(username))){alert('That username is already taken in this browser. Choose another.');return;}if(db.users.some(u=>u.email===email)){alert('An account with this email already exists in this browser.');return;}const role=roleFor(username,'default');const user={email,username,usernameKey:cleanName(username),password,role,permissions:{...DEFAULT_PERMISSIONS}};db.users.push(user);saveDB(db);currentUser=user;}else{const user=db.users.find(u=>u.email===email&&u.password===password);if(!user){alert('Email or password is incorrect, or the account is not on this browser.');return;}currentUser=user;}refreshPortal();});
+    $('logout').addEventListener('click',()=>{currentUser=null;pendingFiles=[];$('file-status').textContent='No files selected';refreshPortal();});
+    $('chat-files').addEventListener('change',e=>{pendingFiles=Array.from(e.target.files);$('file-status').textContent=pendingFiles.length?pendingFiles.map(f=>f.name).join(', '):'No files selected';if(pendingFiles.some(f=>f.size>2*1024*1024)){alert('Each file must be 2 MB or smaller in this demo.');pendingFiles=[];e.target.value='';$('file-status').textContent='No files selected';}});
+    $('chat-form').addEventListener('submit',async e=>{e.preventDefault();if(!currentUser)return;const text=$('chat-text').value.trim();if(!text&&!pendingFiles.length)return;const files=[];for(const f of pendingFiles){files.push({name:f.name,data:await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(f);})});}const db=loadDB();db.messages.push({username:currentUser.username,usernameKey:currentUser.usernameKey,text,files,time:new Date().toLocaleString()});try{saveDB(db);}catch{alert('Browser storage is full. Try smaller files.');return;}$('chat-text').value='';$('chat-files').value='';pendingFiles=[];$('file-status').textContent='No files selected';renderMessages(db);});
+    function saveMemberSettings(){if(!currentUser||roleFor(currentUser.username,currentUser.role)!=='owner')return;const target=cleanName($('role-username').value),role=$('role-choice').value,db=loadDB(),user=db.users.find(u=>u.usernameKey===target);if(!user){alert('No account with that username exists in this browser yet. Create their account first.');return;}if(user.usernameKey==='nexora'&&role!=='owner'){alert('The NEXORA owner account cannot be downgraded in this demo.');return;}user.role=role;user.permissions={chat:$('perm-chat').checked,files:$('perm-files').checked,manageRequests:$('perm-manage-requests').checked,managePortfolio:$('perm-manage-portfolio').checked,manageUsers:$('perm-manage-users').checked,fullAccess:$('perm-full-access').checked};saveDB(db);alert('Saved role and permissions for '+user.username+'. This browser-only demo is not shared or secure for public use.');refreshPortal();}
+    $('assign-role').addEventListener('click',saveMemberSettings);$('load-member').addEventListener('click',()=>{const target=cleanName($('role-username').value),db=loadDB(),u=db.users.find(x=>x.usernameKey===target);if(!u){alert('That username is not registered in this browser yet.');return;} $('role-choice').value=roleFor(u.username,u.role);const p={...DEFAULT_PERMISSIONS,...u.permissions};$('perm-chat').checked=!!p.chat;$('perm-files').checked=!!p.files;$('perm-manage-requests').checked=!!p.manageRequests;$('perm-manage-portfolio').checked=!!p.managePortfolio;$('perm-manage-users').checked=!!p.manageUsers;$('perm-full-access').checked=!!p.fullAccess;});
+
+    // Reveal sections gently as visitors scroll down.
+    const revealItems = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealItems.forEach((item) => observer.observe(item));
+    } else {
+      revealItems.forEach((item) => item.classList.add("visible"));
+    }
+  </script>
+</body>
+</html>
